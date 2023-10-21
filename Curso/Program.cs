@@ -4,34 +4,19 @@ using System.Globalization;
 namespace Curso {
     internal class Program {
         public static void Main(string[] args) {
-            Produto p = new Produto();
+            Aluno aluno = new Aluno();
 
-            Console.WriteLine("Entre com os dados do produto:");
-            Console.Write("Nome: ");
-            p.Nome = Console.ReadLine();
-            Console.Write("Preco: ");
-            p.Preco = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            Console.Write("Quantidade do Estoque: ");
-            p.Quantidade = int.Parse(Console.ReadLine());
+            Console.Write("Nome do Aluno: ");
+            aluno.Nome = Console.ReadLine();
 
-            Console.WriteLine();
-            Console.WriteLine("Dados do produto: " + p);
+            Console.WriteLine("Digite as três notas do aluno: ");
+            aluno.Nota1 = double.Parse(Console.ReadLine());
+            aluno.Nota2 = double.Parse(Console.ReadLine());
+            aluno.Nota3 = double.Parse(Console.ReadLine());
 
-            Console.WriteLine();
-            Console.WriteLine("Digite o número de produtos a ser adicionado: ");
-            int qte = int.Parse(Console.ReadLine());
-            p.AdicionarProdutos(qte);
+            Console.WriteLine("NOTA FINAL: {0}", aluno.NotaFinal().ToString("F2", CultureInfo.InvariantCulture));
 
-            Console.WriteLine();
-            Console.WriteLine("Dados do produto: " + p);
-
-            Console.WriteLine();
-            Console.WriteLine("Digite o número de produtos a ser adicionado: ");
-            qte = int.Parse(Console.ReadLine());
-            p.RemoverProdutos(qte);
-
-            Console.WriteLine();
-            Console.WriteLine("Dados do produto: " + p);
+            aluno.VerificarAprovacao();
         }
     }
 }
