@@ -4,31 +4,34 @@ using System.Globalization;
 namespace Curso {
     internal class Program {
         public static void Main(string[] args) {
-            Triangulo x = new Triangulo();
-            Triangulo y = new Triangulo();
+            Produto p = new Produto();
 
-            Console.WriteLine("Entre com as medidas do triângulo X:");
-            x.A = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            x.B = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            x.C = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            Console.WriteLine("Entre com os dados do produto:");
+            Console.Write("Nome: ");
+            p.Nome = Console.ReadLine();
+            Console.Write("Preco: ");
+            p.Preco = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            Console.Write("Quantidade do Estoque: ");
+            p.Quantidade = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Entre com as medidas do triângulo Y:");
-            y.A = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            y.B = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            y.C = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            Console.WriteLine();
+            Console.WriteLine("Dados do produto: " + p);
 
+            Console.WriteLine();
+            Console.WriteLine("Digite o número de produtos a ser adicionado: ");
+            int qte = int.Parse(Console.ReadLine());
+            p.AdicionarProdutos(qte);
 
-            double areaX = x.Area();
-            double areaY = y.Area();
+            Console.WriteLine();
+            Console.WriteLine("Dados do produto: " + p);
 
-            Console.WriteLine("Área de X = " + areaX.ToString("F4", CultureInfo.InvariantCulture));
-            Console.WriteLine("Área de Y = " + areaY.ToString("F4", CultureInfo.InvariantCulture));
+            Console.WriteLine();
+            Console.WriteLine("Digite o número de produtos a ser adicionado: ");
+            qte = int.Parse(Console.ReadLine());
+            p.RemoverProdutos(qte);
 
-            if(areaX > areaY) {
-                Console.WriteLine("Maior área: X");
-            } else {
-                Console.WriteLine("Maior área: Y");
-            }
+            Console.WriteLine();
+            Console.WriteLine("Dados do produto: " + p);
         }
     }
 }
