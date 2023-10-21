@@ -4,19 +4,25 @@ using System.Globalization;
 namespace Curso {
     internal class Program {
         public static void Main(string[] args) {
-            Aluno aluno = new Aluno();
+            Console.Write("Nome: ");
+            String nome = Console.ReadLine();
+            Console.Write("Salário bruto: ");
+            double salarioBruto = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            Console.Write("Imposto: ");
+            double imposto = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
-            Console.Write("Nome do Aluno: ");
-            aluno.Nome = Console.ReadLine();
 
-            Console.WriteLine("Digite as três notas do aluno: ");
-            aluno.Nota1 = double.Parse(Console.ReadLine());
-            aluno.Nota2 = double.Parse(Console.ReadLine());
-            aluno.Nota3 = double.Parse(Console.ReadLine());
+            Funcionario funcionario = new Funcionario(nome, salarioBruto, imposto);
 
-            Console.WriteLine("NOTA FINAL: {0}", aluno.NotaFinal().ToString("F2", CultureInfo.InvariantCulture));
+            Console.WriteLine("Funcionario: " + funcionario.ToString());
 
-            aluno.VerificarAprovacao();
+
+            Console.Write("Digite a porcentagem para aumentar o salário: ");
+            double porcentagem = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+            funcionario.AumentoSalario(porcentagem);
+
+            Console.WriteLine("Dados Ataulizados: " + funcionario.ToString());
         }
     }
 }
