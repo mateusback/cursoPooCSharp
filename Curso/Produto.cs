@@ -4,9 +4,9 @@ using System.Globalization;
 
 namespace Curso {
     internal class Produto {
-        public String _nome;
-        public double _preco;
-        public int _quantidade;
+        private String _nome;
+        public double Preco { get; private set; }
+        private int _quantidade;
 
         //Properties
         public String Nome{
@@ -15,7 +15,7 @@ namespace Curso {
         }
 
         public double ValorTotalEmEstoque() {
-            return _preco * _quantidade;
+            return Preco * _quantidade;
         }
 
         public void AdicionarProdutos(int quantidade) {
@@ -29,7 +29,7 @@ namespace Curso {
         public override string ToString() {
             return _nome
                 + ", $ "
-                + _preco.ToString("F2", CultureInfo.InvariantCulture)
+                + Preco.ToString("F2", CultureInfo.InvariantCulture)
                 + ", "
                 + _quantidade
                 + " unidades, Total: $ "
