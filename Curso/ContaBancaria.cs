@@ -1,4 +1,6 @@
-﻿namespace Curso{
+﻿using System.Globalization;
+
+namespace Curso{
     internal class ContaBancaria{
         public int Numero { get; private set; }
         public string Titular { get; set; }
@@ -8,17 +10,25 @@
             Numero = numero;
             Titular = titular;
         }
-        public ContaBancaria(int numero, string titular, double saldo) : this(numero, titular){
-            Saldo = saldo;
+        public ContaBancaria(int numero, string titular, double depositoInicial) : this(numero, titular){
+            Deposito(depositoInicial);
         }
 
         public override string ToString(){
-            return "Conta"
+            return "Conta: "
                 + Numero
                 + ", Titular: "
                 + Titular
                 + ", Saldo: $"
-                + Saldo.ToString("F2");
+                + Saldo.ToString("F2", CultureInfo.InvariantCulture);
+        }
+
+        public void Deposito(double quantia){
+            Saldo += quantia;
+        }
+
+        public void Saque(double quantia){
+            Saldo -= quantia + 5.0;
         }
     }
 }
